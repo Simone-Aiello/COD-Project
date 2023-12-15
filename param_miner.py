@@ -70,7 +70,7 @@ def fuzz_headers(url,previous_headers,headers,params):
             table = create_template_table(header.strip(),param.strip())
             at_least_a_difference = False
             previous_headers[header.strip()] = param.strip()
-            modified_request = requests.get(f"{url}?cache={cb}",headers=previous_headers,allow_redirects=False)
+            modified_request = requests.get(f"{url}?cache_buster={cb}",headers=previous_headers,allow_redirects=False)
             modified_content_length = int(modified_request.headers.get("Content-Length"))
             modified_status_code = modified_request.status_code
             modified_headers = modified_request.headers
